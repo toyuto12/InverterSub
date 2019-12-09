@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for IT module.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 #ifndef IT_H

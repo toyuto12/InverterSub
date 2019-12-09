@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for TAU module.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -58,6 +58,7 @@ extern volatile uint32_t g_tmrd0_inactive_width_d;
 extern volatile uint32_t g_tmrd0_active_width_elc;
 extern volatile uint32_t g_tmrd0_inactive_width_elc;
 /* Start user code for global. Do not edit comment generated here */
+uint32_t gFanCaptureValue;
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -230,7 +231,7 @@ void R_TMR_RD0_Create(void)
     TRDPR00 = 1U;   
     TRDMR |= _00_TMRD_TRDGRC0_GENERAL | _00_TMRD_TRDGRD0_GENERAL;
     TRDCR0 = _04_TMRD_INETNAL_CLOCK_F32 | _C0_TMRD_COUNTER_CLEAR_TRDGRD;
-    TRDIER0 |= _00_TMRD_IMID_DISABLE | _10_TMRD_OVIE_ENABLE;
+    TRDIER0 |= _08_TMRD_IMID_ENABLE | _10_TMRD_OVIE_ENABLE;
     TRDIORC0 |= _00_TMRD_TRDGRD_CAPTURE_RISING | _40_TMRD_TRDGRD_CAPTURE;
     /* Set TRDIOD0 pin */
     PM1 |= 0x10U;

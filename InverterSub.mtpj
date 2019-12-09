@@ -1226,10 +1226,10 @@
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
       <Simulator-EditWave-WindowCount>1</Simulator-EditWave-WindowCount>
       <Simulator-EditWave-DocumentName-0>SQBuAHYAZQByAHQAZQByAFMAdQBiADAALgB3AHYAaQA=</Simulator-EditWave-DocumentName-0>
-      <Simulator-EditWave-Contents-0>IyBTaWduYWwgRmlsZQ0KIyBHZW5lcmF0ZWQgYnkgUmVuZXNhcyBFbGVjdHJvbmljcyBTaW11bGF0b3INCg0KDQpPUFQsVkVSU0lPTiwxLjAwDQpPUFQsUElOX05BTUUsUDE0L1J4RDIvU0kyMC9TREEyMC9UUkRJT0QwDQpPUFQsUElOX0FMSUFTLEZBTkNZQw0KT1BULFBJTl9UWVBFLERJR0lUQUwNCk9QVCxQSU5fSU5QVVQsVkFMSUQNCk9QVCxUSU1FX1VOSVQsTVNFQw0KLDAsWg0KUywyOSwxDQpFLDEsMA0K</Simulator-EditWave-Contents-0>
+      <Simulator-EditWave-Contents-0>IyBTaWduYWwgRmlsZQ0KIyBHZW5lcmF0ZWQgYnkgUmVuZXNhcyBFbGVjdHJvbmljcyBTaW11bGF0b3INCg0KDQpPUFQsVkVSU0lPTiwxLjAwDQpPUFQsUElOX05BTUUsUDE0L1J4RDIvU0kyMC9TREEyMC9UUkRJT0QwDQpPUFQsUElOX0FMSUFTLEZBTkNZQw0KT1BULFBJTl9UWVBFLERJR0lUQUwNCk9QVCxQSU5fSU5QVVQsVkFMSUQNCk9QVCxUSU1FX1VOSVQsTVNFQw0KLDAsWg0KUyw4OTksMQ0KRSwxLDANCg==</Simulator-EditWave-Contents-0>
       <Simulator-Panel-WindowCount>0</Simulator-Panel-WindowCount>
-      <Simulator-PrmFile-Contents>AQAAAB0AAABzdGRpbwCmGwAAAAAAEAAAAAAAAAAAAAAAAAAA/Nc0AEILylcAEAAAAAAAAKgw1FcI2DQAc87KV6gw1FcU2DQASQnKV/Aephsg2DQAiqTKVxUAAABc2DQA8DXPV6gw1FfmNc9X2Gx1o1TZNAAAAAAAVNk0AAEAAAAw2DQA8B6mG6jYNABattFXfIGO9P7////mNc9X80PNXQEAAACoMNRXPuB1o1TZNAAAAAAAtEXNXYzYNAAxCcpX8B6mG6gw1FdQMcobAAAAAPjYNACk2DQASQnKV/Aephuw2DQAiqTKVxUAAADg2DQATkPNXagw1Fdm4tVXWGx1o1AxyhtQ2TQAJwAAAAEAAQABAAAAECcAAAAAAAAA6////wgAAAAwMDAwMDAwMAIAAAAuXA==</Simulator-PrmFile-Contents>
-      <Simulator-PrsFile-Contents>W0VkaXRXYXZlXQ0KV2luZG93WzBdIElGTmFtZT0wMDAwMDAwMA0KV2luZG93WzBdIExlZnQ9OTQ0DQpXaW5kb3dbMF0gVG9wPTIzNw0KV2luZG93WzBdIFJpZ2h0PTE1NzYNCldpbmRvd1swXSBCb3R0b209Njc3DQpXaW5kb3dbMF0gU2hvdz0xDQpXaW5kb3dbMF0gRG9jdW1lbnQgTmFtZT1JbnZlcnRlclN1YjAud3ZpDQpXaW5kb3cgQ291bnQ9MQ0KW0Jyb3dzZVdhdmVdDQpXaW5kb3dbMF0gTGVmdD0yMg0KV2luZG93WzBdIFRvcD0yMg0KV2luZG93WzBdIFJpZ2h0PTk5NQ0KV2luZG93WzBdIEJvdHRvbT02NDINCldpbmRvd1swXSBTaG93PTENCldpbmRvd1swXSBab29tPS01DQpXaW5kb3dbMF0gUGluIENvdW50PTENCldpbmRvd1swXSBQaW5bMF1OYW1lPVAxNC9SeEQyL1NJMjAvU0RBMjAvVFJESU9EMA0KV2luZG93WzBdIFBpblswXUZ1bmNOYW1lPUZBTkNZQw0KV2luZG93WzBdIFBpblswXUlzQW5hbG9nPTENCldpbmRvdyBDb3VudD0xDQpbUGFuZWxdDQpQdWxsVXAgUGlucz0NClB1bGxEb3duIFBpbnM9DQpbTWFpbl0NCkZsYWc9Mg0KU2hvd1N0eWxlPTINCk1pblBvc2l0aW9uLVg9LTMyMDAwDQpNaW5Qb3NpdGlvbi1ZPS0zMjAwMA0KTWF4UG9zaXRpb24tWD0tMQ0KTWF4UG9zaXRpb24tWT0tMQ0KTm9ybWFsUG9zaXRpb24tTGVmdD0xNzMxDQpOb3JtYWxQb3NpdGlvbi1Ub3A9MTg1DQpOb3JtYWxQb3NpdGlvbi1SaWdodD0yOTQyDQpOb3JtYWxQb3NpdGlvbi1Cb3R0b209ODUyDQo=</Simulator-PrsFile-Contents>
+      <Simulator-PrmFile-Contents>AQAAAB0AAABzdGRpbwCiLwAAAAAAEAAAAAAAAAAAAAAAAAAADNwoAEILqVsAEAAAAAAAAKgws1sY3CgAc86pW6gws1sk3CgASQmpW/Aeoi8w3CgAiqSpWxUAAABs3CgA8DWuW6gws1vmNa5bnc2NmWTdKAAAAAAAZN0oAAEAAABA3CgA8B6iL7jcKABatrBbCSQLwv7////mNa5b80MgdAEAAACoMLNbjXzzmWTdKAAAAAAAtEUgdJzcKAAxCalb8B6iL6gws1tQMWojAAAAAAjdKAC03CgASQmpW/Aeoi/A3CgAiqSpWxUAAADw3CgATkMgdKgws1tm4rRbHc2NmVAxaiNg3SgAJwAAAAEAAQABAAAAECcAAAAAAAAA6////wgAAAAwMDAwMDAwMAIAAAAuXA==</Simulator-PrmFile-Contents>
+      <Simulator-PrsFile-Contents>W0VkaXRXYXZlXQ0KV2luZG93WzBdIElGTmFtZT0wMDAwMDAwMA0KV2luZG93WzBdIExlZnQ9OTQ0DQpXaW5kb3dbMF0gVG9wPTIzNw0KV2luZG93WzBdIFJpZ2h0PTE1NzYNCldpbmRvd1swXSBCb3R0b209Njc3DQpXaW5kb3dbMF0gU2hvdz0xDQpXaW5kb3dbMF0gRG9jdW1lbnQgTmFtZT1JbnZlcnRlclN1YjAud3ZpDQpXaW5kb3cgQ291bnQ9MQ0KW1BhbmVsXQ0KUHVsbFVwIFBpbnM9DQpQdWxsRG93biBQaW5zPQ0KW01haW5dDQpGbGFnPTINClNob3dTdHlsZT0zDQpNaW5Qb3NpdGlvbi1YPS0zMjAwMA0KTWluUG9zaXRpb24tWT0tMzIwMDANCk1heFBvc2l0aW9uLVg9LTENCk1heFBvc2l0aW9uLVk9LTENCk5vcm1hbFBvc2l0aW9uLUxlZnQ9MTczMQ0KTm9ybWFsUG9zaXRpb24tVG9wPTE4NQ0KTm9ybWFsUG9zaXRpb24tUmlnaHQ9Mjk0Mg0KTm9ybWFsUG9zaXRpb24tQm90dG9tPTg1Mg0K</Simulator-PrsFile-Contents>
     </Instance>
   </Class>
   <Class Guid="9f7af90c-526c-4f28-af29-524df208b9e0">
@@ -2860,9 +2860,9 @@
 &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;
 </KeyExtGridLayout>
-      <KeyTopViewZoom>1</KeyTopViewZoom>
-      <KeyTopViewAngle>0</KeyTopViewAngle>
-      <KeyTopViewPartsCollapsed>False</KeyTopViewPartsCollapsed>
+      <KeyTopViewZoom />
+      <KeyTopViewAngle />
+      <KeyTopViewPartsCollapsed />
       <KEY_SAVE_ALLOCATED_FUNCTION>True</KEY_SAVE_ALLOCATED_FUNCTION>
       <KEY_SAVE_ALLOCATED_FUNCTION_TERMINAL_NUMBER_COLLECTION>15,17,18,19,20,30,31</KEY_SAVE_ALLOCATED_FUNCTION_TERMINAL_NUMBER_COLLECTION>
       <KEY_SAVE_ALLOCATED_FCUNTION_COLLECTION15>15,P50,INTP1,SI00,RxD0,TOOLRxD,SDA00,TRGIOA</KEY_SAVE_ALLOCATED_FCUNTION_COLLECTION15>
@@ -4316,19 +4316,19 @@
         &lt;cg_security7 Name="cg_security7" Value="00" /&gt;
         &lt;pior1_value Name="pior1_value" Value="01" /&gt;
         &lt;cg_security5 Name="cg_security5" Value="00" /&gt;
-        &lt;ocdstart Name="ocdstart" Value="17E00" /&gt;
+        &lt;cg_crc_area Name="cg_crc_area" Value="00" /&gt;
         &lt;cg_security3 Name="cg_security3" Value="00" /&gt;
         &lt;cg_security0 Name="cg_security0" Value="00" /&gt;
         &lt;cg_security1 Name="cg_security1" Value="00" /&gt;
-        &lt;cg_crc_area Name="cg_crc_area" Value="00" /&gt;
         &lt;clock_option Name="clock_option" Value="E8" /&gt;
+        &lt;cg_security2 Name="cg_security2" Value="00" /&gt;
         &lt;pior_value Name="pior_value" Value="00" /&gt;
         &lt;cg_option Name="cg_option" Value="04" /&gt;
         &lt;cg_security8 Name="cg_security8" Value="00" /&gt;
         &lt;cg_security6 Name="cg_security6" Value="00" /&gt;
-        &lt;cg_security4 Name="cg_security4" Value="00" /&gt;
+        &lt;ocdstart Name="ocdstart" Value="17E00" /&gt;
         &lt;cg_pms_value Name="cg_pms_value" Value="00" /&gt;
-        &lt;cg_security2 Name="cg_security2" Value="00" /&gt;
+        &lt;cg_security4 Name="cg_security4" Value="00" /&gt;
         &lt;cg_iawctl_value Name="cg_iawctl_value" Value="00" /&gt;
         &lt;lvi_option Name="lvi_option" Value="FF" /&gt;
         &lt;wdt_option Name="wdt_option" Value="EF" /&gt;
@@ -4677,6 +4677,34 @@
     &lt;/TMRJ0&gt;
     &lt;TMRD0&gt;
       &lt;setting name="Function" value="InputCapture" /&gt;
+      &lt;InputCaptureFunction0&gt;
+        &lt;setting name="Count_source" value="InternalClock" /&gt;
+        &lt;setting name="Internal_Clock" value="f32" /&gt;
+        &lt;setting name="Counter_clear" value="5" /&gt;
+        &lt;setting name="External_clock_edge" value="Rising" /&gt;
+        &lt;setting name="TRDGRCRegisterFunction" value="0" /&gt;
+        &lt;setting name="TRDGRDRegisterFunction" value="0" /&gt;
+        &lt;setting name="TRDIORAEdge" value="0" /&gt;
+        &lt;setting name="TRDIORDEdge" value="0" /&gt;
+        &lt;setting name="TRDIORCEdge" value="0" /&gt;
+        &lt;setting name="TRDIORBEdge" value="0" /&gt;
+        &lt;setting name="TRDGRDCount" value="use" /&gt;
+        &lt;setting name="TRDGRCCount" value="not use" /&gt;
+        &lt;setting name="TRDGRBCount" value="not use" /&gt;
+        &lt;setting name="TRDGRACount" value="not use" /&gt;
+        &lt;setting name="ELC" value="not use" /&gt;
+        &lt;setting name="TRDGDFilter" value="not use" /&gt;
+        &lt;setting name="TRDGCFilter" value="not use" /&gt;
+        &lt;setting name="TRDGBFilter" value="not use" /&gt;
+        &lt;setting name="TRDGAFilter" value="not use" /&gt;
+        &lt;setting name="Sample_Clock" value="0" /&gt;
+        &lt;setting name="INTOverFlow" value="use" /&gt;
+        &lt;setting name="INTTRDGRD" value="use" /&gt;
+        &lt;setting name="INTTRDGRC" value="use" /&gt;
+        &lt;setting name="INTTRDGRB" value="use" /&gt;
+        &lt;setting name="INTTRDGRA" value="use" /&gt;
+        &lt;setting name="INTPriority" value="1" /&gt;
+      &lt;/InputCaptureFunction0&gt;
       &lt;ComplementaryPWM0&gt;
         &lt;setting name="Count_source" value="InternalClock" /&gt;
         &lt;setting name="Internal_Clock" value="Auto" /&gt;
@@ -4835,34 +4863,6 @@
         &lt;setting name="INTOverFlow" value="use" /&gt;
         &lt;setting name="INTPriority" value="3" /&gt;
       &lt;/OutPutCompareFunction0&gt;
-      &lt;InputCaptureFunction0&gt;
-        &lt;setting name="Count_source" value="InternalClock" /&gt;
-        &lt;setting name="Internal_Clock" value="f32" /&gt;
-        &lt;setting name="Counter_clear" value="5" /&gt;
-        &lt;setting name="External_clock_edge" value="Rising" /&gt;
-        &lt;setting name="TRDGRCRegisterFunction" value="0" /&gt;
-        &lt;setting name="TRDGRDRegisterFunction" value="0" /&gt;
-        &lt;setting name="TRDIORAEdge" value="0" /&gt;
-        &lt;setting name="TRDIORDEdge" value="0" /&gt;
-        &lt;setting name="TRDIORCEdge" value="0" /&gt;
-        &lt;setting name="TRDIORBEdge" value="0" /&gt;
-        &lt;setting name="TRDGRDCount" value="use" /&gt;
-        &lt;setting name="TRDGRCCount" value="not use" /&gt;
-        &lt;setting name="TRDGRBCount" value="not use" /&gt;
-        &lt;setting name="TRDGRACount" value="not use" /&gt;
-        &lt;setting name="ELC" value="not use" /&gt;
-        &lt;setting name="TRDGDFilter" value="not use" /&gt;
-        &lt;setting name="TRDGCFilter" value="not use" /&gt;
-        &lt;setting name="TRDGBFilter" value="not use" /&gt;
-        &lt;setting name="TRDGAFilter" value="not use" /&gt;
-        &lt;setting name="Sample_Clock" value="0" /&gt;
-        &lt;setting name="INTOverFlow" value="use" /&gt;
-        &lt;setting name="INTTRDGRD" value="not use" /&gt;
-        &lt;setting name="INTTRDGRC" value="use" /&gt;
-        &lt;setting name="INTTRDGRB" value="use" /&gt;
-        &lt;setting name="INTTRDGRA" value="use" /&gt;
-        &lt;setting name="INTPriority" value="1" /&gt;
-      &lt;/InputCaptureFunction0&gt;
     &lt;/TMRD0&gt;
     &lt;TMRD1&gt;
       &lt;setting name="Function" value="Unused" /&gt;
@@ -5387,6 +5387,7 @@
 &lt;/RL78G14&gt;</CodeGenerator>
       <FormatVersion>1.0</FormatVersion>
       <ToolGUID>98af6d95-1ca9-4ed9-b6a4-9934a22b8b48</ToolGUID>
+      <CodeGeneratorItem>6a0994b1-259d-4904-b331-d37ee5f56826</CodeGeneratorItem>
     </Instance>
   </Class>
   <Class Guid="2a2c2a43-ecdb-4e88-80bd-e75f3e33db90">

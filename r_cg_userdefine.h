@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file includes user definition.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 #ifndef _USER_DEF_H
@@ -62,8 +62,12 @@ typedef struct{
 
 extern stReceiveData gRev;
 extern uint8_t gIsReceived;
+extern uint8_t gCapEnable;
 extern uint8_t gInterval;
 extern uint16_t sTimeOut;
+
+// TRD
+extern uint32_t gFanCaptureValue;
 
 /* End user code. Do not edit comment generated here */
 #endif

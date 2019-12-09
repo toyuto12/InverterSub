@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements main function.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -50,8 +50,13 @@ Pragma directive
 stReceiveData gRev;
 uint8_t gInterval;
 uint8_t gIsReceived;
+uint8_t gCapEnable;
 uint16_t cyc,adTmp[16];
 uint16_t sTimeOut;
+
+uint32_t rpmTmp[4];
+uint8_t rpmCyc;
+
 
 #define SOFT_VER	0
 #define SOFT_REV	0
@@ -65,6 +70,7 @@ volatile uint8_t gDAReg[20];
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+void TaskFanRpm( void );
 void SetInverterCurrent( uint16_t uA );
 void InitDac(void);
 void SetFanPwm(uint16_t val);
@@ -94,6 +100,8 @@ void main(void)
 		static uint8_t sFanRpm;
 		static uint16_t sInvPow;
 		
+		TaskFanRpm();
+		
 		if( gInterval ){
 			gInterval --;
 			TaskInput( &sInput );
@@ -121,7 +129,7 @@ void main(void)
 					sInvPow = (uint16_t)gRev.param2<<8 | gRev.param1;
 					sInput.fanON = (gRev.param3 == 0x5A) ?1 :0 ;
 					sFanRpm = gRev.param4;
-					if( sFanRpm < 1 ) sFanRpm = 10;
+					if( sFanRpm < 10 ) sFanRpm = 100;
 					else if( sFanRpm > 200 ) sFanRpm = 2000;
 					else sFanRpm *= 10;
 					SendResponse( (uint8_t *)&gRev );
@@ -193,6 +201,22 @@ void R_MAIN_UserInit(void)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
+
+void TaskFanRpm( void ){
+	if( gCapEnable ){
+		gCapEnable = 0;
+		rpmTmp[rpmCyc] = gFanCaptureValue;
+		rpmCyc = (rpmCyc+1) &0x03;
+	}
+}
+
+// 周期をuS単位で取得する。
+uint32_t ReadFanRpm( void ){
+	uint32_t tmp = 0;
+	uint8_t i=4;
+	while(i--) tmp += rpmTmp[i];
+	return tmp>>2;
+}
 
 // 冷媒高圧センサの電圧を取得する（1chだけなので、チャンネル指定なし）
 uint16_t ReadAd(void){

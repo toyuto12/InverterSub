@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -66,11 +66,11 @@ static void __near r_uart0_interrupt_receive(void)
     volatile uint8_t err_type;
 	static uint8_t Pos,Sum,Err;
 	static uint8_t RxBuf[16];
-    
+	
     err_type = (uint8_t)(SSR01 & 0x0007U);
     SIR01 = (uint16_t)err_type;
     rx_data = RXD0;
-	
+
 	if( err_type & 0x02 ) Err = 1;		// パリティエラー
 	
 	if( Pos == 10 ){					// CheckSum
@@ -91,7 +91,8 @@ static void __near r_uart0_interrupt_receive(void)
 		RxBuf[Pos] = rx_data;
 		Sum += rx_data;
 		Pos ++;
-	}}
+	}
+}
 
 /***********************************************************************************************************************
 * Function Name: r_uart0_interrupt_send

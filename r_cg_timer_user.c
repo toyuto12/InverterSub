@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for TAU module.
-* Creation Date: 2019/12/06
+* Creation Date: 2019/12/09
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -97,10 +97,17 @@ static void __near r_tmr_rd0_interrupt(void)
         }
 
         g_tmrd0_inactive_width_d = 0UL;
+		gCapEnable = 1;
     }
 
     TRDIER0 = trdier0_temp;
     /* Start user code. Do not edit comment generated here */
+	if( g_tmrd0_ovf_d >= 13 ){
+		gFanCaptureValue = (uint32_t)(0x10000UL * (uint32_t)g_tmrd0_ovf_d);
+		gCapEnable = 1;
+	}else if( gCapEnable ){
+		gFanCaptureValue = g_tmrd0_active_width_d;
+	}
     /* End user code. Do not edit comment generated here */
 }
 
