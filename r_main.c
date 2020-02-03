@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_main.c
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements main function.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -54,12 +54,15 @@ uint8_t gCapEnable;
 uint16_t cyc,adTmp[16];
 uint16_t sTimeOut;
 
-uint32_t rpmTmp[4];
+uint32_t rpmTmp[4] = { 0x1FFFF, 0x1FFFF, 0x1FFFF, 0x1FFFF };
 uint8_t rpmCyc;
 
+float sPID_p=1.5f,sPID_i=0.20f;
 
-#define SOFT_VER	0
-#define SOFT_REV	0
+void R_MAIN_UserInit(void);
+
+#define SOFT_VER	1
+#define SOFT_REV	1
 
 #pragma address gDAReg=0xFFE00
 volatile uint8_t gDAReg[20];
@@ -79,8 +82,10 @@ void TaskInput( stInput *in );
 void SetDacValue( uint16_t val );
 void ControlFan( uint16_t setRpm );
 uint16_t ReadAd(void);
+uint16_t ReadFanRpm( void );
 uint16_t GetFanRpm( void );
 void debug(void);
+void SendUartAsciiFormValue( uint32_t value, int8_t keta, uint8_t kisuu );
 /* End user code. Do not edit comment generated here */
 void R_MAIN_UserInit(void);
 
@@ -94,10 +99,10 @@ void main(void)
 {
     R_MAIN_UserInit();
     /* Start user code. Do not edit comment generated here */
-	debug();
+	
     while (1U){
 		static stInput sInput;
-		static uint8_t sFanRpm;
+		static uint16_t sFanRpm;
 		static uint16_t sInvPow;
 		
 		TaskFanRpm();
@@ -105,20 +110,21 @@ void main(void)
 		if( gInterval ){
 			gInterval --;
 			TaskInput( &sInput );
+			//oYOBI_HIGH;			
 			
 			adTmp[cyc] = (uint16_t)(ADCR >> 6U);
 			if( cyc == 15 ) cyc = 0;
 			else cyc ++;
 			
-			
 			if( gIsReceived ){
 				uint16_t *pReg;
 				gIsReceived = 0;
+
 				sTimeOut = 1000;
 				gRev.cmd |= 0x80;
 				switch( gRev.cmd & 0x3F ){
 				case 0x0B:		// SoftwareData
-					gRev.param0 = 2;		// ModelNo
+					gRev.param0 = 3;		// ModelNo
 					gRev.param1 = SOFT_VER;
 					gRev.param2 = SOFT_REV;
 					SendResponse( (uint8_t *)&gRev );
@@ -127,44 +133,78 @@ void main(void)
 					// Input Data
 					sInput.ivON = (gRev.param0 == 0x5A) ?1 :0 ;
 					sInvPow = (uint16_t)gRev.param2<<8 | gRev.param1;
-					sInput.fanON = (gRev.param3 == 0x5A) ?1 :0 ;
-					sFanRpm = gRev.param4;
-					if( sFanRpm < 10 ) sFanRpm = 100;
-					else if( sFanRpm > 200 ) sFanRpm = 2000;
-					else sFanRpm *= 10;
+					sInput.fanON = (gRev.param3 == 0xA5) ?1 :0 ;
+					if( gRev.param4 < 10 ) sFanRpm = 100;
+					else if( gRev.param4 >= 98 ) sFanRpm = 980;
+					else sFanRpm = gRev.param4 *10;
+					sFanRpm = (uint16_t)(( (1 /((float)sFanRpm /60)) *1000000) /16);
 					SendResponse( (uint8_t *)&gRev );
 					break;
 				case 0x01:		// ReadData
-					pReg = (uint16_t *)&gRev.param0;
-					pReg[0] = 0x0000;		// インバータ回転数（今回は０固定）
-					pReg[1] = GetFanRpm();	// Fan回転数
-					pReg[2] = ReadAd();		// 冷媒圧力センサAD値					
+				{
+					uint16_t dat;
+					gRev.param0 = 0;
+					gRev.param1 = 0;		// インバータ回転数（今回は０固定）
+
+					dat = (uint16_t)((1 /((float)ReadFanRpm() /64 /1000)) *60);	// Fan回転数
+					gRev.param2 = dat&0xFF;
+					gRev.param3 = (dat>>8)&0xFF;
+
+					dat = ReadAd();		// 冷媒圧力センサAD値					
+					gRev.param4 = dat&0xFF;
+					gRev.param5 = (dat>>8)&0xFF;
+					
 					gRev.param6 = 0;		// インバータステータス
 					if( sInput.ivON )  gRev.param6 |= 0x01;
 					if( sInput.ivFLB ) gRev.param6 |= 0x02;
 					if( sInput.ivOUT ) gRev.param6 |= 0x04;
 					SendResponse( (uint8_t *)&gRev );
 					break;
+				}
+				case 0x13:		// FAN_PIDStatus
+				{
+					uint16_t tmp;
+					tmp = ((uint16_t)gRev.param1<<8) + gRev.param0;
+					if( tmp > 999 ) tmp = 999;
+					sPID_p = (float)tmp /100;
+					tmp = ((uint16_t)gRev.param3<<8) + gRev.param2;
+					if( tmp > 999 ) tmp = 999;
+					sPID_i = (float)tmp /100;
+					SendResponse( (uint8_t *)&gRev );
+					break;
+				}
 				default:
 					break;
 				}
 			}else{
 				if( sTimeOut ) sTimeOut --;
 				else{
-					sInput.ivON = 0;
-					sInput.fanON = 0;
+//					sInput.ivON = 0;
+//					sInput.fanON = 0;
 				}
 
 			}
 
-			if( sInput.commEMStop ){
+			if( sInput.ivFLB ){
 				sInput.ivON = 0;
-				sInput.fanON = 0;
+			}
+			
+			if( sInput.commEMStop ){
+//				sInput.ivON = 0;
+//				sInput.fanON = 0;
 			}
 			
 			if( sInput.ivON ){
+				uint16_t tmp,tmp2,tmp3;
+				if( sInvPow > 2000 ) tmp = (sInvPow-2000) *0.02;
+				else tmp = 0;
+				if( sInvPow > 12000 ) tmp2 = (sInvPow-12000) *0.065;
+				else tmp2 = 0;
+				if( sInvPow > 20000 ) tmp3 = (sInvPow-20000) *0.8;
+				else tmp3 = 0;
+				
 				oIvF(0);			// 接点開放で動作許可
-				SetInverterCurrent(sInvPow);
+				SetInverterCurrent(sInvPow -tmp +tmp2 +tmp3);
 			}else{
 				oIvF(1);			// 接点閉で動作停止
 				SetInverterCurrent(0);
@@ -190,11 +230,12 @@ void R_MAIN_UserInit(void)
 {
     /* Start user code. Do not edit comment generated here */
     R_IT_Start();				// インターバルタイマ
+	R_ADC_Set_OperationOn();
 	R_ADC_Start();				// 冷媒高圧センサ
-	R_TAU0_Channel0_Start();	// Fan指令用PWM出力
-	R_TAU0_Channel3_Start();	// インバータOUT出力パルス受付
+	R_TAU0_Channel1_Start();	// Fan回転数パルス受付
+//	R_TAU0_Channel3_Start();	// インバータOUT出力パルス受付
 	InitDac();					// インバータ制御用DAC出力関係
-	R_TMR_RD0_Start();			// Fan回転数パルス受付
+//	R_TMR_RD0_Start();			// Fan指令用PWM出力 -> 制御中のON/OFFに切り替え
 	R_UART0_Start();			// RS485
     EI();
     /* End user code. Do not edit comment generated here */
@@ -202,20 +243,64 @@ void R_MAIN_UserInit(void)
 
 /* Start user code for adding. Do not edit comment generated here */
 
+uint8_t value2ascii( uint8_t val ){
+	if( val < 10 ) return val +'0';
+	else if( val < 16 ) return val -10 +'a' ;
+	else return ' ';
+}
+
+void SendUartAsciiFormValue( uint32_t value, int8_t keta, uint8_t kisuu ){
+	static uint8_t sBuf[11];
+	uint8_t pos = 8;
+
+	sBuf[9] = '\r';
+	sBuf[10] = '\n';
+	
+	while( (keta-- > 0) || value ){
+		if( !value ) sBuf[pos] = (pos==8) ?'0' :' ' ;
+		else {
+			sBuf[pos] = value2ascii( value%kisuu );
+			value /= kisuu;
+		}
+		pos --;
+	}
+	R_UART0_Send( &sBuf[pos+1], 12-pos);
+}
+
+void SetFanRpm( uint32_t val){
+	rpmTmp[rpmCyc] = val;
+	rpmCyc = (rpmCyc+1) &0x03;
+}
+
 void TaskFanRpm( void ){
+	static uint16_t To = 1000;
+	static uint8_t IsOverFlow = 0;
+	uint32_t tmp;
+	
+	if( gInterval ){		
+		if( To ) To --;
+		else {
+			SetFanRpm( 62517 );
+			IsOverFlow = 1;
+			To = 1000;
+		}
+	}
+	
 	if( gCapEnable ){
 		gCapEnable = 0;
-		rpmTmp[rpmCyc] = gFanCaptureValue;
-		rpmCyc = (rpmCyc+1) &0x03;
+		R_TAU0_Channel1_Get_PulseWidth( &tmp );
+		if( !IsOverFlow ) SetFanRpm( tmp );
+		To = 1000;
+		IsOverFlow = 0;
 	}
 }
 
 // 周期をuS単位で取得する。
-uint32_t ReadFanRpm( void ){
+uint16_t ReadFanRpm( void ){
 	uint32_t tmp = 0;
 	uint8_t i=4;
 	while(i--) tmp += rpmTmp[i];
-	return tmp>>2;
+	return (uint16_t)(tmp>>2);
 }
 
 // 冷媒高圧センサの電圧を取得する（1chだけなので、チャンネル指定なし）
@@ -226,9 +311,11 @@ uint16_t ReadAd(void){
 }
 
 // インバータに出力する電流値を設定する。
-const float DAC2CURRENT	= 5.302865;		// 1DAC当りの電流値換算
+//const float DAC2CURRENT	= 0.185;		// 1DAC当りの電流値換算
+const float DAC2CURRENT	= 0.19425;		// 1DAC当りの電流値換算
 void SetInverterCurrent( uint16_t uA ){
-	SetDacValue( (uint16_t)((float)uA/DAC2CURRENT) +1 );
+	SetDacValue( (uint16_t)((float)uA*DAC2CURRENT) +1 );
+//	SetDacValue( uA );
 }
 
 // DAの設定値を処理する（256*20段階まで設定可能）
@@ -251,7 +338,7 @@ void SetDacValue( uint16_t val ){
 void InitDac(void){
 	uint8_t i=20;
 	while(i--) gDAReg[i] = 0;
-	R_TAU0_Channel1_Start();
+	R_TAU0_Channel0_Start();
 	R_DTCD0_Start();
 	R_DAC0_Start();
 }
@@ -276,8 +363,15 @@ void SendResponse( uint8_t *data ){
 
 // FANに送るPWMをタイマ値で指定する。最大値保護あり
 void SetFanPwm(uint16_t val){
-	if( val > TDR00 ) val = TDR00+1;
-	TDR02 = val;
+	static uint8_t exVal=0;
+	if( val > TRDGRA0 ) val = TRDGRA0+1;
+
+	if( exVal != val ){
+		if( val == 0 ) R_TMR_RD0_Stop();
+		else if( exVal == 0 ) R_TMR_RD0_Start();
+	}
+	exVal = val;
+	TRDGRB0 = val;
 }
 
 // ECFANの回転数を入手する
@@ -290,30 +384,53 @@ uint16_t GetFanRpm( void ){
 }
 
 // ECFANの回転制御を行う（擬似PI制御）
-#define FANPWM_PGAIN	0.3f
+#define FANPWM_PGAIN	3.0f
 #define FANPWM_IGAIN	0.5f
-#define FANPWM_SPAN		5
+#define FANPWM_SPAN		10
 void ControlFan( uint16_t setRpm ){
-	static uint16_t Pid_i,exRpm,Cnt;
-	int16_t tmp;
-	uint16_t rpm = GetFanRpm();
-	uint16_t pid_p,pid;
+	int32_t rpm = ReadFanRpm();
+	int32_t pid_d,pid_p,pid_i,pid;
+	static uint16_t wait=0,wait2=0;
+	static int32_t Diff[2],Integral;
+	float iGain = sPID_i;
 	
-	if( Cnt < FANPWM_SPAN ) Cnt ++;
-	else{
-		Cnt = 0;
-		tmp = (setRpm-rpm) -(rpm-exRpm);
-		if( tmp < 0 ) Pid_i = 0;
-		else Pid_i = (uint16_t)( tmp *FANPWM_IGAIN );
-		exRpm = rpm;
+	
+	if( !setRpm ){
+		Integral = 0;
+		SetFanPwm(1);
+		return;
 	}
 	
-	if( rpm > setRpm ) pid = 0;
+	if( wait < (setRpm/20)) wait ++;
 	else{
-		pid_p = (setRpm -rpm) *FANPWM_PGAIN;
-		pid = pid_p + Pid_i;
+		wait = 0;
+		Diff[0] = Diff[1];
+		Diff[1] = rpm -setRpm;
+		if( Diff[1] < 10000 ){
+			Integral += ((Diff[0] +Diff[1]) /2);
+			//if( Integral > 1000000 ) Integral = 1000000;
+			if( Integral < -100000 ) Integral = -100000;
+		}
 	}
-	SetFanPwm(pid);
+	
+	pid_p = (rpm -setRpm) *sPID_p;
+
+	//pid_d = (Diff[1] -Diff[0]) *2.0f;
+
+	if( setRpm > 83333 ) iGain += (float)(setRpm -83333) /208335.0f;
+	pid_i = Integral *iGain;
+	
+//	if( wait2 < 1000 ) wait2 ++;
+//	else{
+//		wait2 = 0;
+//		P3 |= 0x01;		// RS485 DE/REff
+//		SendUartAsciiFormValue(rpm*100/64,6,10);	
+//	}
+
+	pid = pid_p +pid_i;
+	if( pid > 0xFFFF ) pid = 0xFFFF;
+	if( pid < 0 ) pid = 0;
+	SetFanPwm((uint16_t)pid +2900);
 }
 
 // デジタル入力処理
@@ -322,9 +439,14 @@ void TaskInput( stInput *in ){
 	static uint16_t Cnt[3];
 	stInput tmp;
 	
-	tmp.ivFLB = (P0&0x02) ?0 :1 ;		// P01
+	tmp.ivFLB = (P0&0x02) ?1 :0 ;		// P01
 	tmp.ivOUT = (P3&0x02) ?0 :1 ;		// P31
 	tmp.commEMStop = (P6&0x02) ?1 :0 ;	// P61
+
+	//debug
+//	tmp.ivFLB = (P0&0x02) ?0 :1 ;		// P01
+//	tmp.ivOUT = (P3&0x02) ?0 :1 ;		// P31
+//	tmp.commEMStop = (P6&0x02) ?0 :1 ;	// P61
 	
 	if( in->ivFLB == tmp.ivFLB ) Cnt[0] = 0;
 	else{

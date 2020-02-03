@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_port.c
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for PORT module.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -58,9 +58,10 @@ void R_PORT_Create(void)
     P0 = _00_Pn0_OUTPUT_0;
     P2 = _00_Pn3_OUTPUT_0;
     P3 = _00_Pn0_OUTPUT_0;
-    P6 = _00_Pn1_OUTPUT_0;
+    P6 = _00_Pn0_OUTPUT_0;
     PU0 = _02_PUn1_PULLUP_ON;
     PU1 = _20_PUn5_PULLUP_ON | _40_PUn6_PULLUP_ON;
+    PU3 = _02_PUn1_PULLUP_ON;
     PU7 = _01_PUn0_PULLUP_ON;
     PU12 = _01_PUn0_PULLUP_ON;
     PU14 = _80_PUn7_PULLUP_ON;
@@ -68,8 +69,8 @@ void R_PORT_Create(void)
     ADPC = _04_ADPC_DI_ON;
     PM0 = _00_PMn0_MODE_OUTPUT | _02_PMn1_MODE_INPUT | _FC_PM0_DEFAULT;
     PM2 = _01_PMn0_NOT_USE | _02_PMn1_NOT_USE | _04_PMn2_NOT_USE | _00_PMn3_MODE_OUTPUT | _F0_PM2_DEFAULT;
-    PM3 = _00_PMn0_MODE_OUTPUT | _02_PMn1_NOT_USE | _FC_PM3_DEFAULT;
-    PM6 = _01_PMn0_MODE_INPUT | _00_PMn1_MODE_OUTPUT | _04_PMn2_NOT_USE | _F8_PM6_DEFAULT;
+    PM3 = _00_PMn0_MODE_OUTPUT | _02_PMn1_MODE_INPUT | _FC_PM3_DEFAULT;
+    PM6 = _00_PMn0_MODE_OUTPUT | _02_PMn1_MODE_INPUT | _04_PMn2_NOT_USE | _F8_PM6_DEFAULT;
 }
 
 /* Start user code for adding. Do not edit comment generated here */

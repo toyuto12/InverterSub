@@ -1,9 +1,9 @@
 ﻿<CubeSuiteProject>
-  <ProductVersion>9.01.00.00</ProductVersion>
+  <ProductVersion>9.03.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>9.1</FileVersion>
+      <FileVersion>9.3</FileVersion>
       <ProjectGuid>49adc4c2-9cbf-42a8-aa20-35a9e4d60252</ProjectGuid>
       <ProjectItemGuid>2bbfb3dd-2640-46d6-af6c-c34e23dc5b3f</ProjectItemGuid>
       <FileCategoryGuid>f8091f51-57a6-4471-a4bf-d3c7a56a27f8</FileCategoryGuid>
@@ -374,7 +374,7 @@
       <LibOptionLibraryRuntime-DefaultValue>False</LibOptionLibraryRuntime-DefaultValue>
       <LinkOptionLibraryRuntime-DefaultValue>True</LinkOptionLibraryRuntime-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586260006021065131</TimeTagModified--0>
+      <TimeTagModified--0>-8586212597203312371</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
@@ -391,7 +391,7 @@
       <CompilerVersion-0>
 
 0</CompilerVersion-0>
-      <GeneralOptionCref-0>False</GeneralOptionCref-0>
+      <GeneralOptionCref-0>True</GeneralOptionCref-0>
       <GeneralOptionEnableParallelBuilding-0>False</GeneralOptionEnableParallelBuilding-0>
       <GeneralOptionErrorFolder-0>%BuildModeName%</GeneralOptionErrorFolder-0>
       <GeneralOptionUseMda-0>mda</GeneralOptionUseMda-0>
@@ -402,7 +402,7 @@
       <TemporaryFolder-0 />
       <GeneralOptionEdition-0>None</GeneralOptionEdition-0>
       <GeneralOptionOtherAdditionalOptions-0 />
-      <LastCompilerVersion-0>V1.08.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V1.09.00</LastCompilerVersion-0>
     </Instance>
     <Instance Guid="86bebc9e-2f6f-4e72-83c8-8883e6cf6d33">
       <COptionAsmPath-DefaultValue>False</COptionAsmPath-DefaultValue>
@@ -673,7 +673,7 @@
       <LinkOptionShowCFI-DefaultValue>False</LinkOptionShowCFI-DefaultValue>
       <LinkOptionRrmValue-DefaultValue />
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8586259826459579811</TimeTagModified--0>
+      <TimeTagModified--0>-8586212596986377725</TimeTagModified--0>
       <LinkOptionAutoSectionLayout-0>True</LinkOptionAutoSectionLayout-0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionDebug-0>Debug</LinkOptionDebug-0>
@@ -861,6 +861,7 @@
       <LibOptionLibraryRuntime-DefaultValue>False</LibOptionLibraryRuntime-DefaultValue>
       <LibOptionOtherAdditionalOptions-DefaultValue />
       <LibOptionShowTotalSize-DefaultValue>False</LibOptionShowTotalSize-DefaultValue>
+      <LibOptionAllowDuplicateModuleName-DefaultValue>False</LibOptionAllowDuplicateModuleName-DefaultValue>
       <LibOptionChangeMessageError-DefaultValue>None</LibOptionChangeMessageError-DefaultValue>
       <LibOptionChangeMessageErrorNumber-DefaultValue />
       <IsLockedByUser>False</IsLockedByUser>
@@ -896,6 +897,7 @@
       <LibOptionLibraryRuntime-0>False</LibOptionLibraryRuntime-0>
       <LibOptionOtherAdditionalOptions-0 />
       <LibOptionShowTotalSize-0>False</LibOptionShowTotalSize-0>
+      <LibOptionAllowDuplicateModuleName-0>False</LibOptionAllowDuplicateModuleName-0>
       <LibOptionChangeMessageError-0>None</LibOptionChangeMessageError-0>
       <LibOptionChangeMessageErrorNumber-0 />
     </Instance>
@@ -2893,8 +2895,8 @@
     </Instance>
     <Instance Guid="ccb786f6-b5fc-409c-93bf-105835d48f8f">
       <AccumulateResultOfAnalysis>False</AccumulateResultOfAnalysis>
-      <CompulsorilyOutputCrossReferenceFile>False</CompulsorilyOutputCrossReferenceFile>
-      <CompulsorilyEnableDebugToolFunctions>False</CompulsorilyEnableDebugToolFunctions>
+      <CompulsorilyOutputCrossReferenceFile>True</CompulsorilyOutputCrossReferenceFile>
+      <CompulsorilyEnableDebugToolFunctions>True</CompulsorilyEnableDebugToolFunctions>
       <IncludePrototypeDeclaration>True</IncludePrototypeDeclaration>
       <RefreshAtProgramStop>Yes</RefreshAtProgramStop>
       <UnitOfTime>Nanosecond</UnitOfTime>
@@ -3281,10 +3283,10 @@
     &lt;CHAIN_HEAD_23 Name="CHAIN_HEAD_23" Text="" /&gt;
     &lt;dtc_controldata_channels Name="dtc_controldata_channels" Text="0" /&gt;
     &lt;DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" /&gt;
-    &lt;ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="20" /&gt;
+    &lt;ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="19" /&gt;
     &lt;TO02_PWM Name="TO02_PWM" Text="false" /&gt;
     &lt;TO03_PWM Name="TO03_PWM" Text="false" /&gt;
-    &lt;INPT0USE0 Name="INPT0USE0" Text="false" /&gt;
+    &lt;INPT0USE0 Name="INPT0USE0" Text="true" /&gt;
     &lt;TRDINTP0LINK0 Name="TRDINTP0LINK0" Text="false" /&gt;
     &lt;TRDIOC1_PWM Name="TRDIOC1_PWM" Text="false" /&gt;
     &lt;TRDIOD1_PWM Name="TRDIOD1_PWM" Text="false" /&gt;
@@ -3312,10 +3314,10 @@
           &lt;P11 Name="P11/SI11/SDA11/TRDIOC1" Nch="true" AltFunc="" Point="I/O" /&gt;
           &lt;P12 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P12/SO11/TRDIOB1/IVREF1" DIN="true" AltFunc="" Point="I/O" /&gt;
           &lt;P13 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P13/TXD2/SO20/TRDIOA1/IVCMP1" Nch="true" DIN="true" AltFunc="" Point="I/O" /&gt;
-          &lt;P14 Name="P14/RXD2/SI20/SDA20/TRDIOD0" TTL="true" Nch="true" AltFunc="TRDIOD0_P14" Point="I/O" /&gt;
-          &lt;P15 Name="P15/_SCK20/SCL20/TRDIOB0" TTL="true" Nch="true" AltFunc="" Point="I/O" /&gt;
-          &lt;P16 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P16/TI01/TO01/INTP5/TRDIOC0/IVREF0" DIN="true" TTL="true" AltFunc="" Point="I/O" /&gt;
-          &lt;P17 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P17/TI02/TO02/TRDIOA0/TRDCLK/IVCMP0" TTL="true" Nch="true" DIN="true" AltFunc="TO02" Point="I/O" /&gt;
+          &lt;P14 Name="P14/RXD2/SI20/SDA20/TRDIOD0" TTL="true" Nch="true" AltFunc="" Point="I/O" /&gt;
+          &lt;P15 Name="P15/_SCK20/SCL20/TRDIOB0" TTL="true" Nch="true" AltFunc="TRDIOB0_P15" Point="I/O" /&gt;
+          &lt;P16 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P16/TI01/TO01/INTP5/TRDIOC0/IVREF0" DIN="true" TTL="true" AltFunc="TI01" Point="I/O" /&gt;
+          &lt;P17 Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104GK,R5F104GL,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104JK,R5F104JL,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104LK,R5F104LL,R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104MK,R5F104ML,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104PK,R5F104PL" Name="P17/TI02/TO02/TRDIOA0/TRDCLK/IVCMP0" TTL="true" Nch="true" DIN="true" AltFunc="" Point="I/O" /&gt;
         &lt;/Port1&gt;
         &lt;Port2 ADIN="true"&gt;
           &lt;P20 Name="P20/ANI0/AVREFP" AltFunc="ANI0" Point="I/O" /&gt;
@@ -3325,7 +3327,7 @@
         &lt;/Port2&gt;
         &lt;Port3 Pullup="true"&gt;
           &lt;P30 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P30/INTP3/RTC1HZ/_SCK00/SCL00/TRJO0" Nch="true" TTL="true" AltFunc="P30" Point="I/O" /&gt;
-          &lt;P31 Chip="RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin" Name="P31/TI03/TO03/INTP4/PCLBUZ0" AltFunc="TI03" Point="I/O" /&gt;
+          &lt;P31 Chip="RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin" Name="P31/TI03/TO03/INTP4/PCLBUZ0" AltFunc="P31" Point="I/O" /&gt;
         &lt;/Port3&gt;
         &lt;Port4 Pullup="true"&gt;
           &lt;P40 Name="P40/TOOL0" AltFunc="" Point="I/O" /&gt;
@@ -3568,7 +3570,7 @@
             &lt;INTTM00 InUse="0" ISR="r_tau0_channel0_interrupt" /&gt;
           &lt;/Channel0&gt;
           &lt;Channel1&gt;
-            &lt;INTTM01 InUse="0" ISR="r_tau0_channel1_interrupt" /&gt;
+            &lt;INTTM01 InUse="1" ISR="r_tau0_channel1_interrupt" /&gt;
             &lt;INTTM01H InUse="0" ISR="r_tau0_channel1_higher8bits_interrupt" /&gt;
           &lt;/Channel1&gt;
           &lt;Channel2&gt;
@@ -3599,7 +3601,7 @@
           &lt;INTTRJ0 InUse="0" ISR="r_tmr_rj0_interrupt" /&gt;
         &lt;/TMRJ0&gt;
         &lt;TMRD0&gt;
-          &lt;INTTMRD0 InUse="1" ISR="r_tmr_rd0_interrupt" /&gt;
+          &lt;INTTMRD0 InUse="0" ISR="r_tmr_rd0_interrupt" /&gt;
         &lt;/TMRD0&gt;
         &lt;TMRD1&gt;
           &lt;INTTMRD1 InUse="0" ISR="r_tmr_rd1_interrupt" /&gt;
@@ -3680,13 +3682,15 @@
         &lt;/r_cg_cgc_user.c&gt;
         &lt;r_cg_cgc.h UserName="r_cg_cgc.h" LibName=".h" InUse="1" /&gt;
         &lt;r_cg_pfdl.c UserName="r_cg_pfdl.c" LibName="_pfdl.c" InUse="1"&gt;
-          &lt;Type R_FDL_Create="void R_FDL_Create(void)" R_FDL_Write="pfdl_status_t R_FDL_Write(pfdl_u16 index, __near pfdl_u08* buffer, pfdl_u16 bytecount)" R_FDL_Read="pfdl_status_t R_FDL_Read(pfdl_u16 index, __near pfdl_u08* buffer, pfdl_u16 bytecount)" R_FDL_Erase="pfdl_status_t R_FDL_Erase(pfdl_u16 blockno)" R_FDL_Open="void R_FDL_Open(void)" R_FDL_Close="void PFDL_Close(void)" /&gt;
-          &lt;R_FDL_Create UserName="R_FDL_Create" LibName="R_FDL_Create" InUse="0" Init="1" InitMode="" /&gt;
+          &lt;Type R_FDL_Create="void R_FDL_Create(void)" R_FDL_Write="pfdl_status_t R_FDL_Write(pfdl_u16 index, __near pfdl_u08* buffer, pfdl_u16 bytecount)" R_FDL_Read="pfdl_status_t R_FDL_Read(pfdl_u16 index, __near pfdl_u08* buffer, pfdl_u16 bytecount)" R_FDL_Erase="pfdl_status_t R_FDL_Erase(pfdl_u16 blockno)" R_FDL_Open="void R_FDL_Open(void)" R_FDL_Close="void PFDL_Close(void)" R_FDL_BlankCheck="pfdl_status_t R_FDL_BlankCheck(pfdl_u16 index, pfdl_u16 bytecount)" R_FDL_IVerify="pfdl_status_t R_FDL_IVerify(pfdl_u16 index, pfdl_u16 bytecount)" /&gt;
+          &lt;R_FDL_Create UserName="R_FDL_Create" LibName="R_FDL_Create" InUse="0" InitMode="" /&gt;
           &lt;R_FDL_Write UserName="R_FDL_Write" LibName="R_FDL_Write" InUse="0" /&gt;
           &lt;R_FDL_Read UserName="R_FDL_Read" LibName="R_FDL_Read" InUse="0" /&gt;
           &lt;R_FDL_Erase UserName="R_FDL_Erase" LibName="R_FDL_Erase" InUse="0" /&gt;
           &lt;R_FDL_Open UserName="R_FDL_Open" LibName="R_FDL_Open" InUse="0" /&gt;
           &lt;R_FDL_Close UserName="R_FDL_Close" LibName="R_FDL_Close" InUse="0" /&gt;
+          &lt;R_FDL_BlankCheck UserName="R_FDL_BlankCheck" LibName="R_FDL_BlankCheck" InUse="0" /&gt;
+          &lt;R_FDL_IVerify UserName="R_FDL_IVerify" LibName="R_FDL_IVerify" InUse="0" /&gt;
         &lt;/r_cg_pfdl.c&gt;
         &lt;r_cg_pfdl.h UserName="r_cg_pfdl.h" LibName="_pfdl.h" InUse="0" /&gt;
       &lt;/CGC&gt;
@@ -3990,7 +3994,7 @@
               &lt;R_TAU0_Channel1_Stop UserName="R_TAU0_Channel1_Stop" LibName="R_TAU_Channeln_Stop" InUse="1" /&gt;
               &lt;R_TAU0_Channel1_Higher8bits_Stop UserName="R_TAU0_Channel1_Higher8bits_Stop" LibName="R_TAU_Channeln_Higher8bits_Stop" InUse="0" /&gt;
               &lt;R_TAU0_Channel1_Lower8bits_Stop UserName="R_TAU0_Channel1_Lower8bits_Stop" LibName="R_TAU_Channeln_Lower8bits_Stop" InUse="0" /&gt;
-              &lt;R_TAU0_Channel1_Get_PulseWidth UserName="R_TAU0_Channel1_Get_PulseWidth" LibName="R_TAU_Channeln_Get_PulseWidth" InUse="0" /&gt;
+              &lt;R_TAU0_Channel1_Get_PulseWidth UserName="R_TAU0_Channel1_Get_PulseWidth" LibName="R_TAU_Channeln_Get_PulseWidth" InUse="1" /&gt;
             &lt;/Channel1&gt;
             &lt;Channel2 InUse=""&gt;
               &lt;R_TAU0_Channel2_Start UserName="R_TAU0_Channel2_Start" LibName="R_TAU_Channeln_Start" InUse="0" /&gt;
@@ -3999,13 +4003,13 @@
               &lt;R_TAU0_Channel2_Set_SoftwareTriggerOn UserName="R_TAU0_Channel2_Set_SoftwareTriggerOn" LibName="R_TAU_Channeln_Set_SoftwareTriggerOn" InUse="0" /&gt;
             &lt;/Channel2&gt;
             &lt;Channel3 InUse=""&gt;
-              &lt;R_TAU0_Channel3_Start UserName="R_TAU0_Channel3_Start" LibName="R_TAU_Channeln_Start" InUse="1" /&gt;
+              &lt;R_TAU0_Channel3_Start UserName="R_TAU0_Channel3_Start" LibName="R_TAU_Channeln_Start" InUse="0" /&gt;
               &lt;R_TAU0_Channel3_Higher8bits_Start UserName="R_TAU0_Channel3_Higher8bits_Start" LibName="R_TAU_Channeln_Higher8bits_Start" InUse="0" /&gt;
               &lt;R_TAU0_Channel3_Lower8bits_Start UserName="R_TAU0_Channel3_Lower8bits_Start" LibName="R_TAU_Channeln_Lower8bits_Start" InUse="0" /&gt;
-              &lt;R_TAU0_Channel3_Stop UserName="R_TAU0_Channel3_Stop" LibName="R_TAU_Channeln_Stop" InUse="1" /&gt;
+              &lt;R_TAU0_Channel3_Stop UserName="R_TAU0_Channel3_Stop" LibName="R_TAU_Channeln_Stop" InUse="0" /&gt;
               &lt;R_TAU0_Channel3_Higher8bits_Stop UserName="R_TAU0_Channel3_Higher8bits_Stop" LibName="R_TAU_Channeln_Higher8bits_Stop" InUse="0" /&gt;
               &lt;R_TAU0_Channel3_Lower8bits_Stop UserName="R_TAU0_Channel3_Lower8bits_Stop" LibName="R_TAU_Channeln_Lower8bits_Stop" InUse="0" /&gt;
-              &lt;R_TAU0_Channel3_Get_PulseWidth UserName="R_TAU0_Channel3_Get_PulseWidth" LibName="R_TAU_Channeln_Get_PulseWidth" InUse="1" /&gt;
+              &lt;R_TAU0_Channel3_Get_PulseWidth UserName="R_TAU0_Channel3_Get_PulseWidth" LibName="R_TAU_Channeln_Get_PulseWidth" InUse="0" /&gt;
             &lt;/Channel3&gt;
           &lt;/TAU0&gt;
           &lt;TMRJ0 InUse=""&gt;
@@ -4019,7 +4023,7 @@
             &lt;R_TMR_RD0_Create UserName="R_TMR_RD0_Create" LibName="R_TMR_RDn_Create" InUse="1" Init="2" InitMode="" /&gt;
             &lt;R_TMR_RD0_Start UserName="R_TMR_RD0_Start" LibName="R_TMR_RDn_Start" InUse="1" /&gt;
             &lt;R_TMR_RD0_Stop UserName="R_TMR_RD0_Stop" LibName="R_TMR_RDn_Stop" InUse="1" /&gt;
-            &lt;R_TMR_RD0_Get_PulseWidth UserName="R_TMR_RD0_Get_PulseWidth" LibName="R_TMR_RDn_Get_PulseWidth" InUse="1" /&gt;
+            &lt;R_TMR_RD0_Get_PulseWidth UserName="R_TMR_RD0_Get_PulseWidth" LibName="R_TMR_RDn_Get_PulseWidth" InUse="0" /&gt;
             &lt;R_TMR_RD0_Set_PowerOff UserName="R_TMR_RD0_Set_PowerOff" LibName="R_TMR_RDn_Set_PowerOff" InUse="0" /&gt;
             &lt;R_TMR_RD0_ForcedOutput_Start UserName="R_TMR_RD0_ForcedOutput_Start" LibName="R_TMR_RDn_ForcedOutput_Start" InUse="0" /&gt;
             &lt;R_TMR_RD0_ForcedOutput_Stop UserName="R_TMR_RD0_ForcedOutput_Stop" LibName="R_TMR_RDn_ForcedOutput_Stop" InUse="0" /&gt;
@@ -4049,7 +4053,7 @@
               &lt;r_tau0_channel0_interrupt UserName="r_tau0_channel0_interrupt" INTHandle="" LibName="r_tau_channeln_interrupt" InUse="0" /&gt;
             &lt;/Channel0&gt;
             &lt;Channel1 InUse=""&gt;
-              &lt;r_tau0_channel1_interrupt UserName="r_tau0_channel1_interrupt" INTHandle="" LibName="r_tau_channeln_interrupt" InUse="0" /&gt;
+              &lt;r_tau0_channel1_interrupt UserName="r_tau0_channel1_interrupt" INTHandle="" LibName="r_tau_channeln_interrupt" InUse="1" /&gt;
               &lt;r_tau0_channel1_higher8bits_interrupt UserName="r_tau0_channel1_higher8bits_interrupt" INTHandle="" LibName="r_tau_channeln_higher8bits_interrupt" InUse="0" /&gt;
             &lt;/Channel1&gt;
             &lt;Channel2 InUse=""&gt;
@@ -4066,7 +4070,7 @@
           &lt;/TMRJ0&gt;
           &lt;TMRD0 InUse=""&gt;
             &lt;R_TMR_RD0_Create_UserInit UserName="R_TMR_RD0_Create_UserInit" LibName="R_TMR_RDn_Create_UserInit" InUse="0" /&gt;
-            &lt;r_tmr_rd0_interrupt UserName="r_tmr_rd0_interrupt" LibName="r_tmr_rdn_interrupt" INTHandle="" InUse="1" /&gt;
+            &lt;r_tmr_rd0_interrupt UserName="r_tmr_rd0_interrupt" LibName="r_tmr_rdn_interrupt" INTHandle="" InUse="0" /&gt;
           &lt;/TMRD0&gt;
           &lt;TMRD1 InUse=""&gt;
             &lt;R_TMR_RD1_Create_UserInit UserName="R_TMR_RD1_Create_UserInit" LibName="R_TMR_RDn_Create_UserInit" InUse="0" /&gt;
@@ -4321,17 +4325,17 @@
         &lt;cg_security0 Name="cg_security0" Value="00" /&gt;
         &lt;cg_security1 Name="cg_security1" Value="00" /&gt;
         &lt;clock_option Name="clock_option" Value="E8" /&gt;
-        &lt;cg_security2 Name="cg_security2" Value="00" /&gt;
         &lt;pior_value Name="pior_value" Value="00" /&gt;
         &lt;cg_option Name="cg_option" Value="04" /&gt;
         &lt;cg_security8 Name="cg_security8" Value="00" /&gt;
         &lt;cg_security6 Name="cg_security6" Value="00" /&gt;
         &lt;ocdstart Name="ocdstart" Value="17E00" /&gt;
         &lt;cg_pms_value Name="cg_pms_value" Value="00" /&gt;
-        &lt;cg_security4 Name="cg_security4" Value="00" /&gt;
+        &lt;cg_security2 Name="cg_security2" Value="00" /&gt;
         &lt;cg_iawctl_value Name="cg_iawctl_value" Value="00" /&gt;
         &lt;lvi_option Name="lvi_option" Value="FF" /&gt;
         &lt;wdt_option Name="wdt_option" Value="EF" /&gt;
+        &lt;cg_security4 Name="cg_security4" Value="00" /&gt;
       &lt;/GlobleUserTag&gt;
     &lt;/TAG&gt;
   &lt;/DIR&gt;
@@ -4467,7 +4471,7 @@
       &lt;DTCD0&gt;
         &lt;setting name="DTCChannel" value="true" /&gt;
         &lt;setting name="ChainTransfer" value="false" /&gt;
-        &lt;setting name="Source" value="14" /&gt;
+        &lt;setting name="Source" value="13" /&gt;
       &lt;/DTCD0&gt;
       &lt;DTCD1&gt;
         &lt;setting name="DTCChannel" value="false" /&gt;
@@ -4586,7 +4590,7 @@
       &lt;/DTCD23&gt;
     &lt;/DTC&gt;
     &lt;IT&gt;
-      &lt;setting name="IntervalValue" value="10" /&gt;
+      &lt;setting name="IntervalValue" value="1" /&gt;
       &lt;setting name="ValueScale" value="0" /&gt;
       &lt;setting name="Operation" value="enable" /&gt;
       &lt;setting name="INTTIT_priority" value="1" /&gt;
@@ -4602,8 +4606,24 @@
     &lt;/WDT&gt;
     &lt;TAU0&gt;
       &lt;Channel0&gt;
-        &lt;setting name="ChannelFunction" value="8" /&gt;
+        &lt;setting name="ChannelFunction" value="1" /&gt;
         &lt;setting name="Pinselection" value="-1" /&gt;
+        &lt;TAUInterval0&gt;
+          &lt;setting name="OperationMode" value="16bits" /&gt;
+          &lt;setting name="Count_clock" value="MCK clock" /&gt;
+          &lt;setting name="Sub_clock_mode" value="-1" /&gt;
+          &lt;setting name="Interval_value" value="100" /&gt;
+          &lt;setting name="Value_scale" value="1" /&gt;
+          &lt;setting name="Intervalvalue_High8bits" value="100" /&gt;
+          &lt;setting name="Intervalvalue_High8bits_scale" value="-1" /&gt;
+          &lt;setting name="Intervalvalue_Low8bits" value="100" /&gt;
+          &lt;setting name="Intervalvalue_Low8bits_Scale" value="-1" /&gt;
+          &lt;setting name="Generate_interrupt_when_couting_started" value="no" /&gt;
+          &lt;setting name="Interrupt" value="unused" /&gt;
+          &lt;setting name="Interrupt_priority" value="3" /&gt;
+          &lt;setting name="InterruptH_priority" value="3" /&gt;
+          &lt;setting name="InterruptH8" value="unused" /&gt;
+        &lt;/TAUInterval0&gt;
         &lt;TAUPWMMaster0&gt;
           &lt;PWMMaster0&gt;
             &lt;setting name="Value_scale" value="1" /&gt;
@@ -4635,8 +4655,17 @@
         &lt;/TAUPWMMaster0&gt;
       &lt;/Channel0&gt;
       &lt;Channel1&gt;
-        &lt;setting name="ChannelFunction" value="1" /&gt;
+        &lt;setting name="ChannelFunction" value="4" /&gt;
         &lt;setting name="Pinselection" value="-1" /&gt;
+        &lt;TAUIntervalMeasure1&gt;
+          &lt;setting name="MeasureRang" value="32 (µs) &amp;lt; TI01 &amp;lt; 2097.136 (ms)" /&gt;
+          &lt;setting name="Noise_filter" value="used" /&gt;
+          &lt;setting name="TI0_input_edge" value="fall" /&gt;
+          &lt;setting name="Interrupt" value="used" /&gt;
+          &lt;setting name="Generate_interrupt_when_counting_started" value="no" /&gt;
+          &lt;setting name="Interrupt_priority" value="1" /&gt;
+          &lt;setting name="Input_source" value="TI05" /&gt;
+        &lt;/TAUIntervalMeasure1&gt;
         &lt;TAUInterval1&gt;
           &lt;setting name="OperationMode" value="16bits" /&gt;
           &lt;setting name="Count_clock" value="MCK clock" /&gt;
@@ -4655,11 +4684,11 @@
         &lt;/TAUInterval1&gt;
       &lt;/Channel1&gt;
       &lt;Channel2&gt;
-        &lt;setting name="ChannelFunction" value="11" /&gt;
+        &lt;setting name="ChannelFunction" value="0" /&gt;
         &lt;setting name="Pinselection" value="-1" /&gt;
       &lt;/Channel2&gt;
       &lt;Channel3&gt;
-        &lt;setting name="ChannelFunction" value="4" /&gt;
+        &lt;setting name="ChannelFunction" value="0" /&gt;
         &lt;setting name="Pinselection" value="-1" /&gt;
         &lt;TAUIntervalMeasure3&gt;
           &lt;setting name="MeasureRang" value="1024 (µs) &amp;lt; TI03 &amp;lt; 67108.352 (ms)" /&gt;
@@ -4676,7 +4705,40 @@
       &lt;setting name="Function" value="Unused" /&gt;
     &lt;/TMRJ0&gt;
     &lt;TMRD0&gt;
-      &lt;setting name="Function" value="InputCapture" /&gt;
+      &lt;setting name="Function" value="PWM3Output" /&gt;
+      &lt;PWM3Output0&gt;
+        &lt;setting name="Count_source" value="InternalClock" /&gt;
+        &lt;setting name="Internal_Clock" value="Auto" /&gt;
+        &lt;setting name="External_clock_edge" value="Rising" /&gt;
+        &lt;setting name="Counter_operation" value="0" /&gt;
+        &lt;setting name="TRDGRDRegisterFunction" value="0" /&gt;
+        &lt;setting name="TRDGRCRegisterFunction" value="0" /&gt;
+        &lt;setting name="PeriodUnit" value="1" /&gt;
+        &lt;setting name="Duty3" value="50" /&gt;
+        &lt;setting name="Duty2" value="50" /&gt;
+        &lt;setting name="Duty1" value="50" /&gt;
+        &lt;setting name="Period" value="1000" /&gt;
+        &lt;setting name="Duty3_Inuse" value="not use" /&gt;
+        &lt;setting name="Duty2_Inuse" value="not use" /&gt;
+        &lt;setting name="Duty1_Inuse" value="use" /&gt;
+        &lt;setting name="InitOutputLevelD" value="0" /&gt;
+        &lt;setting name="OutputLevelD" value="0" /&gt;
+        &lt;setting name="InitOutputLevelC" value="0" /&gt;
+        &lt;setting name="OutputLevelC" value="0" /&gt;
+        &lt;setting name="InitOutputLevelB" value="1" /&gt;
+        &lt;setting name="OutputLevelB" value="0" /&gt;
+        &lt;setting name="INTP0_linked" value="not use" /&gt;
+        &lt;setting name="ELC_linked" value="not use" /&gt;
+        &lt;setting name="TRDIOB_Normal" value="0" /&gt;
+        &lt;setting name="TRDIOC_Normal" value="0" /&gt;
+        &lt;setting name="TRDIOD_Normal" value="0" /&gt;
+        &lt;setting name="INTTRDGRD" value="use" /&gt;
+        &lt;setting name="INTTRDGRC" value="use" /&gt;
+        &lt;setting name="INTTRDGRB" value="not use" /&gt;
+        &lt;setting name="INTTRDGRA" value="not use" /&gt;
+        &lt;setting name="INTOverFlow" value="not use" /&gt;
+        &lt;setting name="INTPriority" value="3" /&gt;
+      &lt;/PWM3Output0&gt;
       &lt;InputCaptureFunction0&gt;
         &lt;setting name="Count_source" value="InternalClock" /&gt;
         &lt;setting name="Internal_Clock" value="f32" /&gt;
@@ -5138,8 +5200,8 @@
           &lt;setting name="Output_value" value="0" /&gt;
         &lt;/P30&gt;
         &lt;P31&gt;
-          &lt;setting name="Operation" value="unused" /&gt;
-          &lt;setting name="Pull_up" value="unused" /&gt;
+          &lt;setting name="Operation" value="input" /&gt;
+          &lt;setting name="Pull_up" value="used" /&gt;
           &lt;setting name="TTL_buffer" value="unused" /&gt;
           &lt;setting name="N-ch_open-drain" value="unused" /&gt;
           &lt;setting name="Output_value" value="0" /&gt;
@@ -5172,14 +5234,14 @@
       &lt;/PortP5&gt;
       &lt;PortP6&gt;
         &lt;P60&gt;
-          &lt;setting name="Operation" value="input" /&gt;
+          &lt;setting name="Operation" value="output" /&gt;
           &lt;setting name="Pull_up" value="unused" /&gt;
           &lt;setting name="TTL_buffer" value="unused" /&gt;
           &lt;setting name="N-ch_open-drain" value="unused" /&gt;
           &lt;setting name="Output_value" value="0" /&gt;
         &lt;/P60&gt;
         &lt;P61&gt;
-          &lt;setting name="Operation" value="output" /&gt;
+          &lt;setting name="Operation" value="input" /&gt;
           &lt;setting name="Pull_up" value="unused" /&gt;
           &lt;setting name="TTL_buffer" value="unused" /&gt;
           &lt;setting name="N-ch_open-drain" value="unused" /&gt;

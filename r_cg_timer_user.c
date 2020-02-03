@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_timer_user.c
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for TAU module.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -38,76 +38,37 @@ Includes
 /***********************************************************************************************************************
 Pragma directive
 ***********************************************************************************************************************/
-#pragma interrupt r_tmr_rd0_interrupt(vect=INTTRD0)
+#pragma interrupt r_tau0_channel1_interrupt(vect=INTTM01)
 /* Start user code for pragma. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
 Global variables and functions
 ***********************************************************************************************************************/
-/* For TAU0_ch3 pulse measurement */
-volatile uint32_t g_tau0_ch3_width = 0UL;
-/* TMRD0 input capture mode */
-volatile uint32_t g_tmrd0_active_width_a = 0UL;
-volatile uint32_t g_tmrd0_inactive_width_a = 0UL;
-volatile uint32_t g_tmrd0_active_width_b = 0UL;
-volatile uint32_t g_tmrd0_inactive_width_b = 0UL;
-volatile uint32_t g_tmrd0_active_width_c = 0UL;
-volatile uint32_t g_tmrd0_inactive_width_c = 0UL;
-volatile uint32_t g_tmrd0_active_width_d = 0UL;
-volatile uint32_t g_tmrd0_inactive_width_d = 0UL;
-volatile uint32_t g_tmrd0_active_width_elc = 0UL;
-volatile uint32_t g_tmrd0_inactive_width_elc = 0UL;
-volatile uint8_t  g_tmrd0_ovf_d = 0U;
+/* For TAU0_ch1 pulse measurement */
+volatile uint32_t g_tau0_ch1_width = 0UL;
 /* Start user code for global. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
-* Function Name: r_tmr_rd0_interrupt
-* Description  : This function is INTTRD0 interrupt service routine.
+* Function Name: r_tau0_channel1_interrupt
+* Description  : This function is INTTM01 interrupt service routine.
 * Arguments    : None
 * Return Value : None
 ***********************************************************************************************************************/
-static void __near r_tmr_rd0_interrupt(void)
+static void __near r_tau0_channel1_interrupt(void)
 {
-    uint8_t trdsr0_temp = TRDSR0;
-    uint16_t tmrd_pul_d_cur = TRDGRD0;
-    uint8_t trdier0_temp = TRDIER0;
-
-    TRDIER0 = 0x00U;
-
-    if ((TRDSR0 & _10_TMRD0_INTOV_GENERATE_FLAG) == _10_TMRD0_INTOV_GENERATE_FLAG)
+    if ((TSR01 & _0001_TAU_OVERFLOW_OCCURS) == 1U)    /* overflow occurs */
+    {            
+        g_tau0_ch1_width = (uint32_t)(TDR01 + 1UL) + 0x10000UL;
+    }
+    else
     {
-        TRDSR0 = trdsr0_temp & (uint8_t)~_10_TMRD0_INTOV_GENERATE_FLAG;
-        g_tmrd0_ovf_d += 1U;
+        g_tau0_ch1_width = (uint32_t)(TDR01 + 1UL);
     }
 
-    if ((TRDSR0 & _08_TMRD0_INTD_GENERATE_FLAG) == _08_TMRD0_INTD_GENERATE_FLAG)
-    {
-        TRDSR0 = trdsr0_temp & (uint8_t)~_08_TMRD0_INTD_GENERATE_FLAG;
-
-        if (g_tmrd0_ovf_d == 0U)
-        {
-            g_tmrd0_active_width_d = (uint32_t)tmrd_pul_d_cur;
-        }
-        else
-        {
-            g_tmrd0_active_width_d = (uint32_t)(0x10000UL * (uint32_t)g_tmrd0_ovf_d + (uint32_t)tmrd_pul_d_cur);
-            g_tmrd0_ovf_d = 0U;
-        }
-
-        g_tmrd0_inactive_width_d = 0UL;
-		gCapEnable = 1;
-    }
-
-    TRDIER0 = trdier0_temp;
     /* Start user code. Do not edit comment generated here */
-	if( g_tmrd0_ovf_d >= 13 ){
-		gFanCaptureValue = (uint32_t)(0x10000UL * (uint32_t)g_tmrd0_ovf_d);
-		gCapEnable = 1;
-	}else if( gCapEnable ){
-		gFanCaptureValue = g_tmrd0_active_width_d;
-	}
+	gCapEnable = 1;
     /* End user code. Do not edit comment generated here */
 }
 

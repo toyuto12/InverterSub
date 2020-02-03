@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_serial_user.c
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -52,6 +52,7 @@ extern volatile uint8_t * gp_uart0_rx_address;         /* uart0 receive buffer a
 extern volatile uint16_t  g_uart0_rx_count;            /* uart0 receive data number */
 extern volatile uint16_t  g_uart0_rx_length;           /* uart0 receive data length */
 /* Start user code for global. Do not edit comment generated here */
+uint8_t CheckCmd( uint8_t cmd );
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -64,12 +65,13 @@ static void __near r_uart0_interrupt_receive(void)
 {
     volatile uint8_t rx_data;
     volatile uint8_t err_type;
-	static uint8_t Pos,Sum,Err;
+ 	static uint8_t Pos,Sum,Err;
 	static uint8_t RxBuf[16];
-	
+	   
     err_type = (uint8_t)(SSR01 & 0x0007U);
     SIR01 = (uint16_t)err_type;
     rx_data = RXD0;
+
 
 	if( err_type & 0x02 ) Err = 1;		// パリティエラー
 	
@@ -140,4 +142,14 @@ static void r_uart0_callback_sendend(void)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
+uint8_t CheckCmd( uint8_t cmd ){
+	static uint8_t cmds[] = {0x0B,0x01,0x11,0x13};
+	uint8_t i;
+
+	for( i=0; i<sizeof(cmds); i++ ){
+		if( cmd == cmds[i] ) return 1;
+	}
+	return 0;
+}
+
 /* End user code. Do not edit comment generated here */

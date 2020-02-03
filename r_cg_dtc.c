@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_dtc.c
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for DTC module.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -72,7 +72,7 @@ void R_DTC_Create(void)
     /* Set base address */
     DTCBAR = 0xFDU;
     /* Set DTCD0 */
-    dtc_vectortable[20] = 0x40U;
+    dtc_vectortable[19] = 0x40U;
     dtc_controldata_0.dtccr = _01_DTC_TRANSFER_MODE_REPEAT | _00_DTC_DATA_SIZE_8BITS | _02_DTC_REPEAT_AREA_SOURCE |
                               _00_DTC_SOURCE_ADDR_FIXED | _00_DTC_DEST_ADDR_FIXED | _00_DTC_CHAIN_TRANSFER_DISABLE |
                               _00_DTC_REPEAT_INT_DISABLE;
@@ -91,7 +91,7 @@ void R_DTC_Create(void)
 ***********************************************************************************************************************/
 void R_DTCD0_Start(void)
 {
-    DTCEN2 |= _08_DTC_TAU01_ACTIVATION_ENABLE;
+    DTCEN2 |= _10_DTC_TAU00_ACTIVATION_ENABLE;
 }
 
 /***********************************************************************************************************************
@@ -102,7 +102,7 @@ void R_DTCD0_Start(void)
 ***********************************************************************************************************************/
 void R_DTCD0_Stop(void)
 {
-    DTCEN2 &= (uint8_t)~_08_DTC_TAU01_ACTIVATION_ENABLE;
+    DTCEN2 &= (uint8_t)~_10_DTC_TAU00_ACTIVATION_ENABLE;
 }
 
 /* Start user code for adding. Do not edit comment generated here */

@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2011, 2018 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2011, 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_userdefine.h
-* Version      : CodeGenerator for RL78/G14 V2.05.03.02 [06 Nov 2018]
+* Version      : CodeGenerator for RL78/G14 V2.05.04.02 [20 Nov 2019]
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file includes user definition.
-* Creation Date: 2019/12/09
+* Creation Date: 2020/01/30
 ***********************************************************************************************************************/
 
 #ifndef _USER_DEF_H
@@ -59,6 +59,18 @@ typedef struct{
 
 #define oYOBI(x)		P6 = (x)?P6|0x01 :P6&~0x01		// P60
 #define oIvF(x)			P0 = (x)?P0|0x01 :P0&~0x01		// P00
+
+#define oYOBI_HIGH	(P6 |= 0x01)
+#define oYOBI_LOW	(P6 &= ~0x01)
+#define iYOBI		(P6&0x01)
+
+#define oIvF_HIGH	(P0 |= 0x01)
+#define oIvF_LOW	(P0 &= ~0x01)
+#define iIvF		(P0&0x01)
+
+#define iEMSTOP		(P6&0x02)
+#define iFLB		(P0&0x02)
+#define iOUT		(P3&0x02)
 
 extern stReceiveData gRev;
 extern uint8_t gIsReceived;
