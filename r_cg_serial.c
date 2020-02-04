@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 2020/01/30
+* Creation Date: 2020/02/03
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -65,7 +65,7 @@ void R_SAU0_Create(void)
     NOP();
     NOP();
     NOP();
-    SPS0 = _0003_SAU_CK00_FCLK_3 | _0030_SAU_CK01_FCLK_3;
+    SPS0 = _0004_SAU_CK00_FCLK_4 | _0040_SAU_CK01_FCLK_4;
     R_UART0_Create();
 }
 

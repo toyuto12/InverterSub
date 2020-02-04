@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 2020/01/30
+* Creation Date: 2020/02/03
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -67,21 +67,21 @@ static void __near r_uart0_interrupt_receive(void)
     volatile uint8_t err_type;
  	static uint8_t Pos,Sum,Err;
 	static uint8_t RxBuf[16];
-	   
+	static uint8_t exRxData = 0;
+    
     err_type = (uint8_t)(SSR01 & 0x0007U);
     SIR01 = (uint16_t)err_type;
     rx_data = RXD0;
-
 
 	if( err_type & 0x02 ) Err = 1;		// パリティエラー
 	
 	if( Pos == 10 ){					// CheckSum
 		if( rx_data != Sum ) Err = 1;
 		Pos ++;
-	}else if( rx_data == 0xFF ){		// Start1/2
+	}else if( (exRxData==0xFF) && (rx_data==0xFF) ){		// Start1/2
 		Pos = 0;	Sum = 0;	Err = 0;
 	}else if( Pos == 11 ){				// End
-		if( (RxBuf[0]!=0x0B) && (RxBuf[0]!=0x01) && (RxBuf[0]!=0x11) ) Err = 1;		
+		if( (RxBuf[0]!=0x0B) && (RxBuf[0]!=0x01) && (RxBuf[0]!=0x11) && (RxBuf[0]!=0x13) ) Err = 1;		
 		if( rx_data == 0xFE ){
 			uint8_t *buf = (uint8_t *)&gRev;
 			if( Err ) RxBuf[1] |= 0x20;
@@ -94,6 +94,7 @@ static void __near r_uart0_interrupt_receive(void)
 		Sum += rx_data;
 		Pos ++;
 	}
+	exRxData = rx_data;
 }
 
 /***********************************************************************************************************************

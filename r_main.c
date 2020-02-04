@@ -23,7 +23,7 @@
 * Device(s)    : R5F104BF
 * Tool-Chain   : CCRL
 * Description  : This file implements main function.
-* Creation Date: 2020/01/30
+* Creation Date: 2020/02/03
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -110,7 +110,7 @@ void main(void)
 		if( gInterval ){
 			gInterval --;
 			TaskInput( &sInput );
-			//oYOBI_HIGH;			
+			oYOBI_HIGH;			
 			
 			adTmp[cyc] = (uint16_t)(ADCR >> 6U);
 			if( cyc == 15 ) cyc = 0;
@@ -162,25 +162,27 @@ void main(void)
 					break;
 				}
 				case 0x13:		// FAN_PIDStatus
-				{
-					uint16_t tmp;
-					tmp = ((uint16_t)gRev.param1<<8) + gRev.param0;
-					if( tmp > 999 ) tmp = 999;
-					sPID_p = (float)tmp /100;
-					tmp = ((uint16_t)gRev.param3<<8) + gRev.param2;
-					if( tmp > 999 ) tmp = 999;
-					sPID_i = (float)tmp /100;
+					if( !sInput.fanON ){
+						uint16_t tmp;
+						tmp = ((uint16_t)gRev.param1<<8) + gRev.param0;
+						if( tmp > 999 ) tmp = 999;
+						sPID_p = (float)tmp /100;
+						tmp = ((uint16_t)gRev.param3<<8) + gRev.param2;
+						if( tmp > 999 ) tmp = 999;
+						sPID_i = (float)tmp /100;
+					}else{
+						gRev.adr = 0x20;
+					}
 					SendResponse( (uint8_t *)&gRev );
 					break;
-				}
 				default:
 					break;
 				}
 			}else{
 				if( sTimeOut ) sTimeOut --;
 				else{
-//					sInput.ivON = 0;
-//					sInput.fanON = 0;
+					sInput.ivON = 0;
+					sInput.fanON = 0;
 				}
 
 			}
@@ -190,8 +192,8 @@ void main(void)
 			}
 			
 			if( sInput.commEMStop ){
-//				sInput.ivON = 0;
-//				sInput.fanON = 0;
+				sInput.ivON = 0;
+				sInput.fanON = 0;
 			}
 			
 			if( sInput.ivON ){
@@ -315,7 +317,6 @@ uint16_t ReadAd(void){
 const float DAC2CURRENT	= 0.19425;		// 1DAC当りの電流値換算
 void SetInverterCurrent( uint16_t uA ){
 	SetDacValue( (uint16_t)((float)uA*DAC2CURRENT) +1 );
-//	SetDacValue( uA );
 }
 
 // DAの設定値を処理する（256*20段階まで設定可能）
