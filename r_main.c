@@ -147,6 +147,7 @@ void main(void)
 					gRev.param1 = 0;		// インバータ回転数（今回は０固定）
 
 					dat = (uint16_t)((1 /((float)ReadFanRpm() /64 /1000)) *60);	// Fan回転数
+					if( dat < 70 ) dat = 0;
 					gRev.param2 = dat&0xFF;
 					gRev.param3 = (dat>>8)&0xFF;
 
