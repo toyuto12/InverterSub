@@ -137,7 +137,7 @@ void main(void)
 					if( gRev.param4 < 10 ) sFanRpm = 100;
 					else if( gRev.param4 >= 98 ) sFanRpm = 980;
 					else sFanRpm = gRev.param4 *10;
-					sFanRpm = (uint16_t)(( (1 /((float)sFanRpm /60)) *1000000) /16);
+					sFanRpm = (uint16_t)( ((1 /((float)sFanRpm /60)) *1000000) /16);
 					SendResponse( (uint8_t *)&gRev );
 					break;
 				case 0x01:		// ReadData
@@ -146,7 +146,8 @@ void main(void)
 					gRev.param0 = 0;
 					gRev.param1 = 0;		// ƒCƒ“ƒo[ƒ^‰ñ“]”i¡‰ñ‚Í‚OŒÅ’èj
 
-					dat = (uint16_t)((1 /((float)ReadFanRpm() /64 /1000)) *60);	// Fan‰ñ“]”
+//					dat = (uint16_t)((1 /((float)ReadFanRpm() /64 /1000)) *60);	// Fan‰ñ“]”
+					dat = (uint16_t)((1 /((float)ReadFanRpm() /60 /1000000)) /16);	// Fan‰ñ“]”
 					if( dat < 70 ) dat = 0;
 					gRev.param2 = dat&0xFF;
 					gRev.param3 = (dat>>8)&0xFF;
@@ -283,7 +284,10 @@ void TaskFanRpm( void ){
 	if( gInterval ){		
 		if( To ) To --;
 		else {
-			SetFanRpm( 62517 );
+			SetFanRpm( 0x1FFFF );
+			SetFanRpm( 0x1FFFF );
+			SetFanRpm( 0x1FFFF );
+			SetFanRpm( 0x1FFFF );
 			IsOverFlow = 1;
 			To = 1000;
 		}
